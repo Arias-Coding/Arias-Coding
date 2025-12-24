@@ -1,83 +1,48 @@
-# 👋 ¡Hola! 
 
-### 💻 Desarrollador Frontend Junior | TypeScript | React | Next.js | Node.js
+# Arias | Frontend Developer
 
-Soy un apasionado del desarrollo web con enfoque en **crear interfaces modernas, rápidas y accesibles**.
-Me encanta aprender nuevas tecnologías, mejorar mis habilidades y participar en proyectos que tengan un impacto real.
+Desarrollador Frontend enfocado en la construcción de interfaces escalables, performantes y centradas en la experiencia del usuario. Especializado en el ecosistema **React** y **TypeScript**, con sólida capacidad para integrar servicios externos y gestionar estados complejos en el cliente.
 
 ---
 
-## 🚀 Tecnologías y herramientas
+### 🛠️ Stack Técnico
 
-**Frontend:**
-
-* React.js / Next.js
-* TypeScript / JavaScript (ES6+)
-* HTML5 / CSS3 / Tailwind / Sass
-
-**Backend:**
-
-* Node.js / Express.js
-* REST APIs / GraphQL
-
-**Bases de datos:**
-
-* MongoDB / Mongoose
-* SQL (PostgreSQL, MySQL)
-
-**Otros:**
-
-* Git / GitHub
-* Vercel / Render / Netlify
-* VS Code / Postman
+| Área | Tecnologías |
+| --- | --- |
+| **Frontend** | React.js, Next.js (App Router), TypeScript, JavaScript (ES6+) |
+| **Estilos** | Tailwind CSS, Sass, CSS Modules |
+| **Backend & DB** | Node.js, Express, MongoDB, PostgreSQL |
+| **Herramientas** | Git, Docker, Jest, React Testing Library, Postman |
 
 ---
 
-## 🧩 Actualmente aprendiendo
+### 📂 Proyecto Destacado: React Movies App
 
-* Mejores prácticas con **Next.js App Router**
-* **Testing** con Jest y React Testing Library
-* **Optimización de rendimiento** en frontend
+**[Ver Repositorio](https://github.com/Arias-Coding/ReactMoviesApp)** | **[Demo en vivo](https://www.google.com/search?q=https://react-movies-app-v2.vercel.app/)**
 
----
+Aplicación de descubrimiento de cine de alto rendimiento que consume la API de **TMDB**. Este proyecto demuestra mi capacidad para manejar flujos de datos asíncronos y diseño responsivo avanzado.
 
-<!--
-
-## 📂 Proyectos destacados
-
-
-* 📝 **[Portfolio Personal](#)** — Mi sitio web personal construido con Next.js y Tailwind.
-* 💬 **[Chat App](#)** — Aplicación de mensajería en tiempo real con React, Node.js y Socket.io.
-* 🗂️ **[API REST CRUD](#)** — API con Express y MongoDB.
+* **Arquitectura:** Implementación de **React Context API** para la gestión de estado global (favoritos, preferencias de usuario).
+* **Performance:** Optimización de carga de imágenes y manejo eficiente de peticiones mediante **Hooks personalizados** (`useFetch`).
+* **UI/UX:** Interfaz moderna y fluida construida con **Tailwind CSS**, priorizando la navegación móvil y la accesibilidad.
+* **Routing:** Manejo de rutas dinámicas para detalles de películas, actores y filtrado por categorías.
 
 ---
 
-## 📫 Conecta conmigo
+### 🎯 Enfoque Profesional Actual
 
-* 🌐 [Portfolio](#)
-* 💼 [LinkedIn](#)
-* 📧 **[orlandoarias@example.com](mailto:orlandoarias@example.com)**
-
-
-!-->
+* **Arquitectura de Software:** Implementación de Clean Code y principios SOLID en entornos Frontend.
+* **Testing & QA:** Asegurando la fiabilidad del software mediante Unit Testing con **Jest**.
+* **Optimización:** Mejora de métricas Core Web Vitals y estrategias de renderizado (SSR/Static Generation) con Next.js.
 
 ---
 
-⭐ *“El código limpio no solo funciona, también se entiende.”*
-Gracias por visitar mi perfil 🚀
+### 📫 Conectemos
 
+* **LinkedIn:** [/in/tu-usuario]([https://www.google.com/search?q=https://linkedin.com/in/tu-usuario](https://www.linkedin.com/in/arias-orlando/))
+* **Portfolio:**
+* **Email:** 
 
-<!--
-**Arias-Coding/Arias-Coding** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+---
 
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+> *"Escribir código limpio es una inversión en la mantenibilidad y escalabilidad de un producto."*
