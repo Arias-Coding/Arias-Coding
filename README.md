@@ -18,7 +18,7 @@ Desarrollador Frontend enfocado en la construcción de interfaces escalables, pe
 
 ### 📂 Proyecto Destacado: React Movies App
 
-**[Ver Repositorio](https://github.com/Arias-Coding/ReactMoviesApp)** | **[Demo en vivo](https://www.google.com/search?q=https://react-movies-app-v2.vercel.app/)**
+**[Ver Repositorio](https://github.com/Arias-Coding/ReactMoviesApp)** | **[Demo en vivo]([https://www.google.com/search?q=https://react-movies-app-v2.vercel.app/](https://reactmoviesappview.netlify.app/))**
 
 Aplicación de descubrimiento de cine de alto rendimiento que consume la API de **TMDB**. Este proyecto demuestra mi capacidad para manejar flujos de datos asíncronos y diseño responsivo avanzado.
 
@@ -39,8 +39,8 @@ Aplicación de descubrimiento de cine de alto rendimiento que consume la API de 
 
 ### 📫 Conectemos
 
-* **LinkedIn:** [/in/tu-usuario]([https://www.google.com/search?q=https://linkedin.com/in/tu-usuario](https://www.linkedin.com/in/arias-orlando/))
-* **Portfolio:**
+* **LinkedIn:** [/in/arias-orlando/](https://www.linkedin.com/in/arias-orlando/))
+* **Portfolio:** 
 * **Email:** 
 
 ---
