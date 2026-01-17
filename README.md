@@ -18,14 +18,25 @@ Desarrollador Frontend enfocado en la construcción de interfaces escalables, pe
 ### 📂 Proyectos Destacados
 
 #### 1. FocusFlow: Productivity Suite
-**[Ver Repositorio](https://github.com/Arias-Coding/FocusFlow)** | **[Demo en vivo]()**
+**[Ver Repositorio](https://github.com/Arias-Coding/FocusFlow)** | **[Demo en vivo](https://productivityfocusflow.netlify.app/)**
 
-Una suite de productividad integral diseñada para optimizar el flujo de trabajo personal mediante herramientas reactivas y una estética minimalista.
+Suite integral de productividad que fusiona la metodología Pomodoro con una gestión de tareas avanzada, bajo una arquitectura moderna y escalable.
 
-* **UI Avanzada:** Implementación profesional de **Shadcn/UI** y **Tailwind CSS** con enfoque en *dark mode*, glassmorphism y micro-interacciones.
-* **Lógica de Tiempo:** Manejo preciso de ciclos de vida de React para temporizadores Pomodoro, integrando feedback auditivo mediante `use-sound`.
-* **Visualización de Datos:** Renderizado de calendarios anuales dinámicos utilizando **date-fns** para la gestión compleja de fechas.
-* **Arquitectura:** Componentización modular y tipado estricto con **TypeScript** para asegurar la mantenibilidad.
+- **Stack Tecnológico Core:** Desarrollado con **React 18** y **TypeScript**, garantizando un flujo de datos seguro y una arquitectura de componentes altamente reutilizables.
+    
+- **Gestión de Estado y Persistencia:** Implementación de **Zustand** para un manejo de estado global ligero y eficiente, con sincronización automática en **LocalStorage** para preservar la sesión del usuario.
+    
+- **Interfaz de Usuario de Alto Nivel:** Diseño minimalista utilizando **Tailwind CSS** y **Shadcn/UI**, optimizado con soporte nativo para _Dark Mode_.
+    
+- **Sistema de Tareas Inteligente:** Dashboard dinámico que permite la categorización de tareas, seguimiento de progreso en tiempo real y priorización mediante una interfaz interactiva.
+    
+- **Experiencia de Usuario (UX):** Integración de notificaciones sonoras mediante la API de audio y un sistema de validación de formularios robusto con **Zod** y **React Hook Form**.
+
+- **Autenticación y Gestión de Usuarios**: En lugar de depender solo del estado del navegador, Appwrite actúa como el guardián de la sesión:
+- **Provider de Auth:** Se envuelve la aplicación en un contexto (o se integra en el store de **Zustand**) que valida la sesión con `account.get()` al cargar.
+    
+- **Base de Datos y Sincronización (Backend-as-a-Service)** La lógica del Dashboard se conecta a **Appwrite Databases**:
+- **Seguridad por Documento:** Se aplican permisos de nivel de documento para que cada usuario solo pueda realizar operaciones CRUD sobre sus propios IDs de tareas.
 
 #### 2. MoviesApp: Discovery & Analytics
 **[Ver Repositorio](https://github.com/Arias-Coding/ReactMoviesApp)** | **[Demo en vivo](https://reactmoviesappview.netlify.app/)**
