@@ -61,9 +61,7 @@ Aplicación moderna de descubrimiento de cine que utiliza analíticas en tiempo 
 ### 📫 Conectemos
 
 * **LinkedIn:** [/in/arias-orlando/](https://www.linkedin.com/in/arias-orlando/)
-* **Portfolio:** 
-* **Email:** 
-
+* 
 ---
 
 > *"Escribir código limpio es una inversión en la mantenibilidad y escalabilidad de un producto."*
