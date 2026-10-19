@@ -1,64 +1,53 @@
 # Arias Coding Github
 
----
-
 ### 🛠️ Stack Técnico
 
 | Área | Tecnologías |
 | --- | --- |
-| **Frontend** | React 19, Next.js (App Router), TypeScript, JavaScript (ES6+) |
-| **Estilos & UI** | Tailwind CSS 4, Shadcn/UI, Framer Motion, Lucide Icons |
-| **Backend & BaaS** | Appwrite (Auth & DB), Node.js, Express, MongoDB, Supabase |
-| **Herramientas** | Vite, Git, Postman, ESLint, Vercel/Netlify |
+| **Frontend / Core** | React 19.2, Next.js 16.3 (App Router, Server Components, Server Actions, Route Handlers, Middleware), TypeScript 5 (modo `strict`) |
+| **Estilos & UI** | Tailwind CSS 4 (`@theme` + tokens CSS), sistema de diseño propio *neumórfico* (`shadow-neu`, `shadow-neu-inset`, `radius-bento/panel`), iconografía **SVG inline** handmade (`src/components/icons.tsx`), `next/font` con **Geist / Geist Mono**, `color-scheme: dark` nativo, transiciones CSS + `ResizeObserver` / `IntersectionObserver` en lugar de una librería de animación |
+| **Backend & BaaS** | **Supabase** (Auth email/contraseña, Postgres, RLS, grants por rol), **Supabase SSR** (`@supabase/ssr`) con sesiones en cookies httpOnly, API REST autogenerada vía `supabase-js`, capa de acceso a datos con **actualizaciones optimistas y rollback** (`src/lib/api.ts`, `src/lib/dashboard.tsx`) |
+| **Servidor de aplicación** | **Hono 4** sobre `@hono/node-server` (Node.js), **Argon2** (hashing de contraseñas), **JOSE** (JWT de sesión con `issuer`/`audience`), serialización de transacciones para PGlite, middleware CORS y cookies |
+| **Base de datos** | **PostgreSQL** gestionado por Supabase + **PGlite** (Postgres WASM) para dev local, **13 migraciones SQL** idempotentes (`db/migrations/0001…0013`), enums nativos, índices por `user_id`, triggers `updated_at`, `RLS` por fila (`auth.uid() = user_id`) y `DEFAULT PRIVILEGES` |
+| **Persistencia de sesiones Pomodoro** | **GitHub Gist** privado vía REST API (`data.json`) como almacén externo, caché local en disco (`data/data.json`) como *fallback* best‑effort, expuesta por `GET/POST /api/pomodoros` |
+| **Estado & Arquitectura** | **React Context + Provider** (`DashboardProvider`) como store global, hooks de dominio (`useDock`), *Server Components* para datos y *Client Components* para interacción, separación por dominio en `src/lib` y `src/components` |
+| **Herramientas & Calidad** | ESLint 9 (`eslint-config-next` core-web-vitals + typescript), TypeScript estricto, pnpm 11, PostCSS, `@electric-sql/pglite`, scripts `db:migrate` / `db:seed` / `db:reset` / `db:start`, Git |
+| **Despliegue** | Next.js standalone sobre **Vercel/Netlify** (build `next build`, `next start`), variables de entorno para Supabase, `GITHUB_TOKEN`, `GITHUB_GIST_ID` y `JWT_SECRET` |
 
 ---
 
 ### 📂 Proyectos Destacados
 
 #### 1. FocusFlow: Productivity Suite
-**[Ver Repositorio](https://github.com/Arias-Coding/FocusFlow)** | **[Demo en vivo](https://productivityfocusflow.netlify.app/)**
+**[Ver Repositorio](https://github.com/Arias-Coding/FocusFlow)** | **[Web en vivo](https://dashboard-personal-ten-delta.vercel.app/)**
 
-Suite integral de productividad que fusiona la metodología Pomodoro con una gestión de tareas avanzada, bajo una arquitectura moderna y escalable.
+**Suite integral de productividad** que fusiona la metodología Pomodoro con gestión de tareas, hábitos, agenda y analítica, bajo una arquitectura **full‑stack** moderna, tipada y escalable.
 
-- **Stack Tecnológico Core:** Desarrollado con **React 18** y **TypeScript**, garantizando un flujo de datos seguro y una arquitectura de componentes altamente reutilizables.
-    
-- **Gestión de Estado y Persistencia:** Implementación de **Zustand** para un manejo de estado global ligero y eficiente, con sincronización automática en **LocalStorage** para preservar la sesión del usuario.
-    
-- **Interfaz de Usuario de Alto Nivel:** Diseño minimalista utilizando **Tailwind CSS** y **Shadcn/UI**, optimizado con soporte nativo para _Dark Mode_.
-    
-- **Sistema de Tareas Inteligente:** Dashboard dinámico que permite la categorización de tareas, seguimiento de progreso en tiempo real y priorización mediante una interfaz interactiva.
-    
-- **Experiencia de Usuario (UX):** Integración de notificaciones sonoras mediante la API de audio y un sistema de validación de formularios robusto con **Zod** y **React Hook Form**.
+- **Stack Tecnológico Core:** Desarrollado con **Next.js 16 (App Router)** y **React 19** + **TypeScript**, con *Server Components* para el acceso a datos, *middleware* para el control de rutas y una capa de componentes cliente altamente reutilizable y estrictamente tipada.
 
-- **Autenticación y Gestión de Usuarios**: En lugar de depender solo del estado del navegador, Appwrite actúa como el guardián de la sesión:
-- **Provider de Auth:** Se envuelve la aplicación en un contexto (o se integra en el store de **Zustand**) que valida la sesión con `account.get()` al cargar.
-    
-- **Base de Datos y Sincronización (Backend-as-a-Service)** La lógica del Dashboard se conecta a **Appwrite Databases**:
-- **Seguridad por Documento:** Se aplican permisos de nivel de documento para que cada usuario solo pueda realizar operaciones CRUD sobre sus propios IDs de tareas.
+- **Autenticación y Gestión de Usuarios (Supabase Auth):** El acceso se valida en el servidor mediante un **middleware** que crea un `ServerClient` con `@supabase/ssr` y llama a `auth.getUser()` en cada petición. Las rutas públicas (`/login`, `/register`) expulsan a los usuarios ya autenticados y todo el resto (`/dashboard`) redirige al login con el parámetro `redirect`; la sesión se mantiene en **cookies httpOnly** refrescadas por el middleware.
 
-#### 2. MoviesApp: Discovery & Analytics
-**[Ver Repositorio](https://github.com/Arias-Coding/ReactMoviesApp)** | **[Demo en vivo](https://reactmoviesappview.netlify.app/)**
+- **Capa de Datos y Persistencia:** La lógica de negocio se conecta directamente a **Supabase Postgres** mediante `supabase-js` (cliente de navegador) y **Supabase Auth**. El estado global se gestiona con un **Context + Provider** propio (`DashboardProvider`) en lugar de un store externo, con **actualizaciones optimistas** y *rollback* automático ante fallo de red, evitando recargas completa del dashboard.
 
-Aplicación moderna de descubrimiento de cine que utiliza analíticas en tiempo real para mostrar tendencias globales.
+- **Seguridad a nivel de fila (RLS):** Cada tabla (`tasks`, `boards`, `board_columns`, `habits`, `habit_entries`, `calendar_events`, `agenda_blocks`, `urgent_items`, `quick_notes`, `pomodoro_sessions`, `profiles`) tiene **políticas `auth.uid() = user_id`**, por lo que cada usuario solo puede leer y modificar sus propias filas. El esquema se versiona en **13 migraciones SQL** idempotentes (enums, índices, triggers `updated_at`, grants por rol y backfills).
 
-* **Integración API & BaaS:** Consumo de la API de **TMDB** combinada con **Appwrite** para el almacenamiento y trackeo de películas en tendencia.
-* **Optimización de Performance:** Implementación de búsqueda en tiempo real con **debouncing** (vía `react-use`) para reducir el consumo de API y mejorar la UX.
-* **Modern React:** Uso de React 19, hooks avanzados (`useCallback`, `useEffect`) y patrones de manejo de errores y estados de carga.
-* **Responsive Design:** Interfaz fluida construida con **Tailwind CSS 4**, garantizando una experiencia nativa en dispositivos móviles.
+- **Sistema de Tareas Inteligente:** Dashboard Kanban multi‑tablero con **columnas configurables por tablero** (`board_columns`), arrastre de tarjetas, estados (`pendiente / en‑curso / revisión / hecho`), prioridades, puntos, fecha límite y contadores derivados; incluye un **pipeline anual** por cuatrimestres (objetivos + tareas) con editor dedicado.
 
----
+- **Hábitos y Analítica:** Rastreador de hábitos con **unidad de medición**, objetivo configurable (número / horario / minutos de focus) y entradas por fecha con *upsert* idempotente; la vista de **Análisis** agrega sesiones de foco y cumplimiento de hábitos por día.
 
-### 🎯 Enfoque Profesional Actual
+- **Agenda y Contexto Diario:** Bloques de agenda recurrente multi‑día (`weekdays`), eventos de calendario, y una **hero de briefing** que resume el día a partir de agenda, urgentes y hábitos.
 
-* **Arquitectura de Software:** Implementación de Clean Code y principios SOLID aplicados al desarrollo de componentes.
-* **Modern Stack:** Especial interés en la evolución de React 19 y las nuevas capacidades de Tailwind CSS 4.
-* **UX/UI:** Desarrollo de interfaces que no solo son visualmente atractivas, sino accesibles y optimizadas para la conversión.
+- **Pomodoro con persistencia externa:** Temporizador de ciclos *focus / short‑break / long‑break* con sesiones almacenadas en Supabase, y un **historial exportable vía Route Handler** (`/api/pomodoros`) que persiste los logs en un **Gist privado de GitHub** (`data.json`) con **caché local** en disco como *fallback* best‑effort.
+
+- **Entorno de desarrollo local autocontenido:** Stack **PGlite** (Postgres WASM) + **Hono** (`@hono/node-server`) que replica la API con las mismas políticas RLS, más **Argon2** y **JOSE** para el hashing de contraseñas y la emisión/verificación de **JWT** de sesión, con scripts `db:migrate`, `db:seed`, `db:reset` y `db:start`.
+
+- **Interfaz de Usuario:** Sistema de diseño propio sobre **Tailwind CSS v4** con tokens semánticos (`bg-background`, `bg-surface`, `text-primary`), estética *neumórfica*, layout *dock* y componentes modulares (shell, sidebar, editores de hábito/pipeline/agenda), optimizado para tema oscuro.
 
 ---
 
 ### 📫 Contacto
 
-* **LinkedIn:** [/in/arias-orlando/](https://www.linkedin.com/in/arias-orlando/)
+* **LinkedIn:** 
 * **Email:**
 
 ---
