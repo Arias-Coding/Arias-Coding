@@ -1,6 +1,4 @@
-# Arias | Frontend Developer
-
-Desarrollador Frontend enfocado en la construcción de interfaces escalables, performantes y centradas en la experiencia del usuario. Especializado en el ecosistema **React**, **TypeScript** y **Tailwind CSS**, con sólida capacidad para integrar servicios de backend modernos y gestionar estados complejos en el cliente.
+# Arias Coding Github
 
 ---
 
@@ -10,7 +8,7 @@ Desarrollador Frontend enfocado en la construcción de interfaces escalables, pe
 | --- | --- |
 | **Frontend** | React 19, Next.js (App Router), TypeScript, JavaScript (ES6+) |
 | **Estilos & UI** | Tailwind CSS 4, Shadcn/UI, Framer Motion, Lucide Icons |
-| **Backend & BaaS** | Appwrite (Auth & DB), Node.js, Express, MongoDB |
+| **Backend & BaaS** | Appwrite (Auth & DB), Node.js, Express, MongoDB, Supabase |
 | **Herramientas** | Vite, Git, Postman, ESLint, Vercel/Netlify |
 
 ---
@@ -58,10 +56,9 @@ Aplicación moderna de descubrimiento de cine que utiliza analíticas en tiempo 
 
 ---
 
-### 📫 Conectemos
+### 📫 Contacto
 
 * **LinkedIn:** [/in/arias-orlando/](https://www.linkedin.com/in/arias-orlando/)
-* 
----
+* **Email:**
 
-> *"Escribir código limpio es una inversión en la mantenibilidad y escalabilidad de un producto."*
+---
